@@ -1,22 +1,24 @@
 import { useContext } from 'react'
+import { Link } from 'react-router-dom'
 import { GalleryContext } from '../../../contexts/GalleryContext'
 
 function Post({
-  id, name, description, src, tags,
+  id, name, src,
 }) {
   const { deletePost } = useContext(GalleryContext)
   const deleteHandler = () => { // обработчик события "удалить пост"
     deletePost(id)
   }
-
   return (
     <div name="imgCard" className="card col" style={{ width: '18rem' }}>
-      <img src={src} className="card-img-top pt-2" alt="" />
+      {/* переадресация на детальную страницу по клику на картинку */}
+      <Link to={`/gallery/${id}`}>
+        <img src={src} className="card-img-top pt-2" alt="" />
+      </Link>
       <div className="card-body">
         <h5 className="card-title text-center">{name}</h5>
-        <p className="card-text">{description}</p>
-        <p className="text-primary fst-italic">{tags}</p>
       </div>
+      {/* далее идет кнопка удалить со значком мусорки */}
       <div>
         <button onClick={deleteHandler} type="button" aria-label="Save" className="btn w-25">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash" viewBox="0 0 16 16">

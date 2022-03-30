@@ -26,5 +26,8 @@ module.exports = {
     semi: ['error', 'never'],
     'no-console': 0,
     'import/no-cycle': 0,
+    'react/jsx-no-constructed-context-values': 0,
+    'max-len': ['error', { code: 300 }],
+    'no-unused-vars': 0,
   },
 }
